@@ -1,7 +1,7 @@
 import { Component, State, h } from "@stencil/core";
 @Component({
 tag: "app-settings",
-styleUrl: "app-settings.css"
+styleUrl: "./app-settings.css"
 })
 export class AppSettings {
 @State() useCurrentLocation: boolean = true;
