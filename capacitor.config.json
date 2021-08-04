@@ -1,0 +1,6 @@
+{
+  "appId": "com.arphoSolutions.weatherOnTrip.app",
+  "appName": "weatherOnTrip",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}
