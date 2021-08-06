@@ -1,6 +1,7 @@
 import { Component, h } from "@stencil/core";
 import { Plugins } from "@capacitor/core";
-const { Geolocation } = Plugins;
+import { Geolocation } from '@capacitor/geolocation';
+import {} from "@capacitor/core"
 
 @Component({
   tag: "app-home",

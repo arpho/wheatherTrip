@@ -26,3 +26,5 @@ www
 android
 
 package-lock.json
+
+*.gradle
