@@ -1,0 +1,30 @@
+import { get, set } from "./storage";
+import { Location } from "../models/interfaces/location";
+const TEMPERATURE_UNIT_KEY = "weatherTemperatureUnit";
+const LOCATION_KEY = "weatherUserLocation";
+export class SettingsController {
+
+    private defaultLocation: Location = {
+        lat: null,
+        lng: null,
+        name: "Milano",
+        useCoords: true
+        };
+        // TEMPERATURE UNIT
+        async getTemperatureUnit(): Promise<string> {
+        return (await get(TEMPERATURE_UNIT_KEY)) || "celsius";
+        }
+        async setTemperatureUnit(unit: string): Promise<void> {
+        await set(TEMPERATURE_UNIT_KEY, unit);
+        }
+        // LOCATION
+        async getLocation(): Promise<Location> {
+        return (await get(LOCATION_KEY)) || this.defaultLocation;
+        }
+        async setLocationName(name: string): Promise<void> {
+        let location = (await this.getLocation()) ||
+        this.defaultLocation;
+        location.name = name;
+        return set(LOCATION_KEY, location);
+        }
+    }
