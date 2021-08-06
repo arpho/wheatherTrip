@@ -27,4 +27,19 @@ export class SettingsController {
         location.name = name;
         return set(LOCATION_KEY, location);
         }
+    // COORDS
+async setCoords(lat: number, lng: number): Promise<void> {
+    let location = (await this.getLocation()) ||
+    this.defaultLocation;
+    location.lat = lat;
+    location.lng = lng;
+    return set(LOCATION_KEY, location);
     }
+    async setUseCoords(flag: boolean): Promise<void> {
+    let location = (await this.getLocation()) ||
+    this.defaultLocation;
+    location.useCoords = flag;
+    return set(LOCATION_KEY, location);
+    }
+    }
+    export const SettingsData = new SettingsController();
