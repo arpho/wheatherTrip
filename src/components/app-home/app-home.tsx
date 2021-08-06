@@ -1,5 +1,4 @@
 import { Component, h } from "@stencil/core";
-import { Plugins } from "@capacitor/core";
 import { Geolocation } from '@capacitor/geolocation';
 import {} from "@capacitor/core"
 
