@@ -24,3 +24,5 @@ UserInterfaceState.xcuserstate
 node_modules
 www
 android
+
+package-lock.json
