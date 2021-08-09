@@ -44,7 +44,7 @@ onClick={() => this.handleToggleLocation(true)}
 <small>When using a preset location, the location listed
 below will be used.</small>
 <ion-item>
-<ion-input type="text" value={this.presetLocation} />
+<ion-input type="text" value={this.presetLocation} onChange={(ev:any)=>{this.handleLocationChange(ev.target.value)}}/>
 </ion-item>
 <small>
 Select the unit of measurement that you would like to
@@ -80,6 +80,7 @@ this.unit = unit;
 }
 
 async handleLocationChange(location) {
+    console.log('location',location)
     this.presetLocation = location;
     await SettingsData.setLocationName(location);
     }
