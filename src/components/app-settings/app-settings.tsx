@@ -1,11 +1,12 @@
 import { Component, State, h } from "@stencil/core";
+import { SettingsData } from "../../services/settings-data";
 @Component({
 tag: "app-settings",
 styleUrl: "./app-settings.css"
 })
 export class AppSettings {
 @State() useCurrentLocation: boolean = true;
-@State() presetLocation: string = "Adelaide";
+@State() presetLocation: string = "Milano";
 @State() unit: string = "celsius";
 render() {
 return [
@@ -63,4 +64,14 @@ use to display the weather:
 </ion-content>
 ];
 }
+async componentWillLoad() {
+    let [location, unit] = await Promise.all([
+    SettingsData.getLocation(),
+    SettingsData.getTemperatureUnit()
+]);
+this.useCurrentLocation = location.useCoords;
+this.presetLocation = location.name;
+this.unit = unit;
+}
+
 }
