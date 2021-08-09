@@ -53,15 +53,22 @@ use to display the weather:
 <ion-radio-group>
 <ion-item>
 <ion-label>Celsius</ion-label>
-<ion-radio slot="start" />
+<ion-radio slot="start"
+onClick={()=> this.handleUnitChange("celsius")} />
 </ion-item>
 <ion-item>
 <ion-label>Fahrenheit</ion-label>
-<ion-radio slot="start"/>
+<ion-radio slot="start"
+onClick={()=> this.handleUnitChange("fahrenheit")} 
+/>
+
 </ion-item>
 <ion-item>
 <ion-label>Kelvin</ion-label>
-<ion-radio slot="start"  />
+<ion-radio slot="start" 
+onClick={()=> this.handleUnitChange("kelvin")} 
+
+/>
 </ion-item>
 </ion-radio-group>
 <small hidden={this.unit != "kelvin"}>Kelvin? Seriously?
@@ -83,6 +90,11 @@ async handleLocationChange(location) {
     this.presetLocation = location;
     await SettingsData.setLocationName(location);
     }
+
+    async handleUnitChange(unit) {
+        this.unit = unit;
+        await SettingsData.setTemperatureUnit(unit);
+        }
 
 async handleToggleLocation(useLocation) {
     this.useCurrentLocation = useLocation;
