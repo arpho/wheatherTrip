@@ -79,8 +79,12 @@ this.presetLocation = location.name;
 this.unit = unit;
 }
 
+async handleLocationChange(location) {
+    this.presetLocation = location;
+    await SettingsData.setLocationName(location);
+    }
+
 async handleToggleLocation(useLocation) {
-    console.log('use preset',useLocation)
     this.useCurrentLocation = useLocation;
     await SettingsData.setUseCoords(this.useCurrentLocation);
 }
