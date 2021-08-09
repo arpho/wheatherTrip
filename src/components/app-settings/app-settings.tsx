@@ -80,7 +80,6 @@ this.unit = unit;
 }
 
 async handleLocationChange(location) {
-    console.log('location',location)
     this.presetLocation = location;
     await SettingsData.setLocationName(location);
     }
