@@ -26,13 +26,18 @@ current location, or a preset location of your choosing.
 <ion-radio-group>
 <ion-item>
 <ion-label>Use current location</ion-label>
-<ion-radio slot="start" value="current" 
+<ion-radio 
+slot="start"
+value ="{{this.useCurrentLocation}}"
+onClick={() => this.handleToggleLocation(false)}
 
 />
 </ion-item>
 <ion-item>
 <ion-label>Use preset location</ion-label>
-<ion-radio slot="start" value="preset" 
+<ion-radio 
+slot="start" 
+onClick={() => this.handleToggleLocation(true)}
 />
 </ion-item>
 </ion-radio-group>
@@ -72,6 +77,12 @@ async componentWillLoad() {
 this.useCurrentLocation = location.useCoords;
 this.presetLocation = location.name;
 this.unit = unit;
+}
+
+async handleToggleLocation(useLocation) {
+    console.log('use preset',useLocation)
+    this.useCurrentLocation = useLocation;
+    await SettingsData.setUseCoords(this.useCurrentLocation);
 }
 
 }

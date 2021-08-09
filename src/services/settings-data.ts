@@ -36,6 +36,7 @@ async setCoords(lat: number, lng: number): Promise<void> {
     return set(LOCATION_KEY, location);
     }
     async setUseCoords(flag: boolean): Promise<void> {
+        console.log("setting use coords",flag)
     let location = (await this.getLocation()) ||
     this.defaultLocation;
     location.useCoords = flag;
