@@ -1,8 +1,8 @@
-import { Component, h } from "@stencil/core";
-import { Geolocation } from '@capacitor/geolocation';
-import {} from "@capacitor/core"
+import { Component, State, h } from "@stencil/core";
 import { SettingsData } from "../../services/settings-data";
-
+import { WeatherData } from "../../services/weather-data";
+import { WeatherResponse } from "../../interfaces/weather";
+import { Geolocation } from '@capacitor/geolocation';
 @Component({
   tag: "app-home",
   styleUrl: "app-home.css"
