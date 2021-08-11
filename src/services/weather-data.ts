@@ -58,6 +58,9 @@ async load() {
             unit).toFixed(1));
             return (this.data = data);
             }
-async getCurrentWeather() {}
+            async getCurrentWeather() {
+                const data = await this.load();
+                return data;
+                }
 }
 export const WeatherData = new WeatherDataController();
