@@ -47,7 +47,17 @@ async load() {
         }
 
 
-processData(data: WeatherResponse, unit: string) {}
+        processData(data: WeatherResponse, unit: string) {
+            data.main.temp = parseFloat(convertFromKelvin(data.main.temp,
+            unit).toFixed(1));
+            data.main.temp_min =
+            parseFloat(convertFromKelvin(data.main.temp_min,
+            unit).toFixed(1));
+            data.main.temp_max =
+            parseFloat(convertFromKelvin(data.main.temp_max,
+            unit).toFixed(1));
+            return (this.data = data);
+            }
 async getCurrentWeather() {}
 }
 export const WeatherData = new WeatherDataController();
