@@ -6,7 +6,13 @@ class WeatherDataController {
 public data: WeatherResponse;
 private apiKey: string = weatherKey;
 constructor() {}
-async load() {}
+async load() {
+    if (this.data) {
+    return this.data;
+    } else {
+    return await this.refreshWeather();
+    }
+    }
 async refreshWeather() {}
 processData(data: WeatherResponse, unit: string) {}
 async getCurrentWeather() {}
