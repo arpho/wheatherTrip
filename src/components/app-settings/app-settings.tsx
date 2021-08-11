@@ -28,7 +28,7 @@ current location, or a preset location of your choosing.
 <ion-label>Use current location</ion-label>
 <ion-radio 
 slot="start"
-value ="{{this.useCurrentLocation}}"
+value ={this.useCurrentLocation}
 onClick={() => this.handleToggleLocation(false)}
 
 />
@@ -37,6 +37,7 @@ onClick={() => this.handleToggleLocation(false)}
 <ion-label>Use preset location</ion-label>
 <ion-radio 
 slot="start" 
+value={!this.useCurrentLocation}
 onClick={() => this.handleToggleLocation(true)}
 />
 </ion-item>
@@ -54,7 +55,9 @@ use to display the weather:
 <ion-item>
 <ion-label>Celsius</ion-label>
 <ion-radio slot="start"
-onClick={()=> this.handleUnitChange("celsius")} />
+value={this.unit=="celsius"}
+onClick={()=> this.handleUnitChange("celsius")}
+ />
 </ion-item>
 <ion-item>
 <ion-label>Fahrenheit</ion-label>
@@ -67,6 +70,7 @@ onClick={()=> this.handleUnitChange("fahrenheit")}
 <ion-label>Kelvin</ion-label>
 <ion-radio slot="start" 
 onClick={()=> this.handleUnitChange("kelvin")} 
+value={this.unit==="kelvin"}
 
 />
 </ion-item>
@@ -84,6 +88,7 @@ async componentWillLoad() {
 this.useCurrentLocation = location.useCoords;
 this.presetLocation = location.name;
 this.unit = unit;
+console.log('status',this.unit,this.useCurrentLocation,this.presetLocation)
 }
 
 async handleLocationChange(location) {
