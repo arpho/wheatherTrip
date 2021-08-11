@@ -8,6 +8,35 @@ import { Geolocation } from '@capacitor/geolocation';
   styleUrl: "app-home.css"
 })
 export class AppHome {
+
+  @State() weather: WeatherResponse = {
+    base: "",
+    clouds: null,
+    cod: null,
+    coord: null,
+    dt: null,
+    id: null,
+    main: {
+      humidity: null,
+      pressure: null,
+      temp: null,
+      temp_max: null,
+      temp_min: null
+      },
+      name: "Loading...",
+      sys: null,
+      visibility: null,
+      weather: [
+      {
+      id: null,
+      main: null,
+      description: null,
+      icon: null
+      }
+      ],
+      wind: null
+      };
+
   async componentDidLoad() {
     let coordinates = await Geolocation.getCurrentPosition();
     await SettingsData.setCoords(coordinates.coords.latitude,
