@@ -13,7 +13,40 @@ async load() {
     return await this.refreshWeather();
     }
     }
-async refreshWeather() {}
+
+    async refreshWeather() {
+        let [location, unit] = await Promise.all([
+        SettingsData.getLocation(),
+        SettingsData.getTemperatureUnit()
+        ]);
+        let response;
+        try {
+        if (location.useCoords) {
+        response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?
+        lat=${location.lat}&lon=${
+        location.lng
+        }&APPID=${this.apiKey}`
+        );
+        if (!response.ok) {
+        throw new Error(response.statusText);
+        }
+        } else {
+        response = await fetch( `https://api.openweathermap.org/data/2.5/weather?
+        q=${location.name}&APPID=${this.apiKey}`
+        );
+        if (!response.ok) {
+        throw new Error(response.statusText);
+        }
+        }
+        } catch (err) {
+        return Promise.reject(err);
+        }
+        let weatherData = await response.json();
+        return this.processData(weatherData, unit);
+        }
+
+
 processData(data: WeatherResponse, unit: string) {}
 async getCurrentWeather() {}
 }
