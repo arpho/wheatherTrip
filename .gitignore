@@ -28,3 +28,5 @@ android
 package-lock.json
 
 *.gradle
+
+src/configs/
