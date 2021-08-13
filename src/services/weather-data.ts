@@ -23,7 +23,7 @@ async load() {
         try {
         if (location.useCoords) {
         response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?
+        `https://api.openweathermap.org/data/2.5/weather?id=52490&
         lat=${location.lat}&lon=${
         location.lng
         }&APPID=${this.apiKey}`
